@@ -71,7 +71,6 @@ class LLMSegDataset(torch.utils.data.Dataset):
                 sample = data[image]
                 from_dataset = sample['from_dataset']
                 if sample['from_dataset'] == "ego_objects":
-                    # skip ego_objects temporarily
                     image_path = os.path.join(self.ego_objects_image_dir, image) 
                 else:
                     image_path = os.path.join(self.coco_image_dir, image)
