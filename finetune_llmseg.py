@@ -251,7 +251,7 @@ def init_training_dataset(args, tokenizer):
     world_size = torch.cuda.device_count()
 
     sam_mask_dir = "/home/leikel/junchi/processed_data/"
-    json_path ="/home/leikel/junchi/ReasonCOCO/post_processing/split/train.json"
+    json_path ="/home/leikel/junchi/lisa_dataset/LLMSeg-40K/train.json"
     coco_image_dir='/home/leikel/junchi/lisa_dataset/coco/train2017'
     ego_objects_image_dir = '/home/leikel/junchi/lisa_dataset/ego_objects/images'
 
@@ -282,7 +282,7 @@ def init_validation_dataset(args, tokenizer):
         return None
 
     sam_mask_dir = "/home/leikel/junchi/processed_data/"
-    json_path ="/home/leikel/junchi/ReasonCOCO/post_processing/split/validation.json"
+    json_path ="/home/leikel/junchi/lisa_dataset/LLMSeg-40K/train.json"
     coco_image_dir='/home/leikel/junchi/lisa_dataset/coco/train2017'
     ego_objects_image_dir = '/home/leikel/junchi/lisa_dataset/ego_objects/images'
 
