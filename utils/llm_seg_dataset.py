@@ -78,14 +78,18 @@ class LLMSegDataset(torch.utils.data.Dataset):
                 for qa in qas:
                     question = qa['question']
                     answer = qa['answer']
-                    segmentation_path = qa['segmentation_path']
+                    # segmentation_path = qa['segmentation_path']
+
+                    # read rle mask from json
+                    rle_seg = qa['rle_seg']
 
                     samples.append({
                         'image_path': image_path,
                         'question': question,
                         'answer': answer,
                         'from_dataset': from_dataset, # 'coco' or 'ego_objects'
-                        'segmentation_path': segmentation_path,
+                        'rle_seg': rle_seg,
+                        # 'segmentation_path': segmentation_path,
                     })
 
         return samples
@@ -124,10 +128,14 @@ class LLMSegDataset(torch.utils.data.Dataset):
             "pixel_values"
         ][0]
 
-        segmentation_path = sample['segmentation_path']
-        masks_np = cv2.imread(segmentation_path, cv2.IMREAD_GRAYSCALE)
-        # convert to binary mask
-        masks_np = (masks_np > 0).astype(np.float32)
+        # segmentation_path = sample['segmentation_path']
+        # masks_np = cv2.imread(segmentation_path, cv2.IMREAD_GRAYSCALE)
+        # # convert to binary mask
+        # masks_np = (masks_np > 0).astype(np.float32)
+
+        rle_seg = sample['rle_seg']
+        mask = mask_util.decode(rle_seg)
+        masks_np = (mask > 0).astype(np.float32)
         
         # import pdb; pdb.set_trace()
 
