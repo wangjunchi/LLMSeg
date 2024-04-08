@@ -1,11 +1,11 @@
 #! /bin/bash
 
 
-llava_path="/home/leikel/junchi/pretrained_weights/LLaVA-lightning-7B-v1/"
-vision_path="/home/leikel/junchi/pretrained_weights/SAM/sam_vit_h_4b8939.pth"
-dataset_path="/home/leikel/junchi/lisa_dataset"
-sam_masks_path="/home/leikel/junchi/processed_data"
-log_path="/home/leikel/junchi/lisa_dataset/new_runs"
+llava_path="./pretrained_weights/LLaVA-lightning-7B-v1/"
+vision_path="./pretrained_weights/SAM/sam_vit_h_4b8939.pth"
+dataset_path="./lisa_dataset"
+sam_masks_path="./processed_data"
+log_path="./runs"
 
 
 deepspeed --include localhost:2,3 \
