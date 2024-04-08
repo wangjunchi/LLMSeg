@@ -58,18 +58,18 @@ For example, to train the model for 10 epochs with 2 GPUs, you can run use `trai
 
 ```bash
 #! /bin/bash
-llava_path="/home/leikel/junchi/pretrained_weights/LLaVA-lightning-7B-v1/"
-vision_path="/home/leikel/junchi/pretrained_weights/SAM/sam_vit_h_4b8939.pth"
-dataset_path="/home/leikel/junchi/lisa_dataset"
-sam_masks_path="/home/leikel/junchi/processed_data"
-log_path="/home/leikel/junchi/lisa_dataset/new_runs"
+llava_path="./pretrained_weights/LLaVA-lightning-7B-v1/"
+sam_path="./pretrained_weights/SAM/sam_vit_h_4b8939.pth"
+dataset_path="./lisa_dataset"
+sam_masks_path="./processed_data"
+log_path="./runs"
 
 deepspeed --include localhost:6,7 \
   --master_port=24374 training.py \
   --version="$llava_path" \
   --dataset_dir="$dataset_path" \
   --sam_masks_dir="$sam_masks_path" \
-  --vision_pretrained="$vision_path" \
+  --vision_pretrained="$sam_path" \
   --dataset="sem_seg||refer_seg||reason_seg" \
   --sample_rates="9,3,1" \
   --exp_name="10epoch" \
@@ -77,6 +77,7 @@ deepspeed --include localhost:6,7 \
   --lr=0.0001 \
   --epochs=10 \
   --batch_size=1 \
+
 ```
 
 ## Evaluation on ReasonSeg
@@ -84,12 +85,11 @@ To evaluate the trained model, please modify the `scripts/validate_visualize.sh`
 
 ```bash
 #! /bin/bash
-
-llava_path="/home/leikel/junchi/pretrained_weights/LLaVA-lightning-7B-v1/"
-vision_path="/home/leikel/junchi/pretrained_weights/SAM/sam_vit_h_4b8939.pth"
-dataset_path="/home/leikel/junchi/lisa_dataset"
-sam_masks_path="/home/leikel/junchi/processed_data"
-log_path="/home/leikel/junchi/lisa_dataset/new_runs"
+llava_path="./pretrained_weights/LLaVA-lightning-7B-v1/"
+vision_path="./pretrained_weights/SAM/sam_vit_h_4b8939.pth"
+dataset_path="./lisa_dataset"
+sam_masks_path="./processed_data"
+log_path="./runs"
 
 deepspeed --include localhost:2,3 \
   --master_port=24353 training_debug.py \
@@ -141,12 +141,12 @@ For finetuning the model, you can use your own trained checkpointed or our provi
 
 ```bash
 #! /bin/bash
-llava_path="/home/leikel/junchi/pretrained_weights/LLaVA-lightning-7B-v1/"
-vision_path="/home/leikel/junchi/pretrained_weights/SAM/sam_vit_h_4b8939.pth"
-dataset_path="/home/leikel/junchi/lisa_dataset"
-sam_masks_path="/home/leikel/junchi/processed_data"
-log_path="/home/leikel/junchi/lisa_dataset/new_runs"
-resume_path="/home/leikel/junchi/lisa_dataset/new_runs/10epoch/ckpt_model"
+llava_path="./pretrained_weights/LLaVA-lightning-7B-v1/"
+vision_path="./pretrained_weights/SAM/sam_vit_h_4b8939.pth"
+dataset_path="./lisa_dataset"
+sam_masks_path="./processed_data"
+log_path="./runs"
+resume_path="./runs/10epoch/ckpt_model"
 
 deepspeed --include localhost:2,3 \
   --master_port=24374 finetune_llmseg.py \
@@ -163,6 +163,7 @@ deepspeed --include localhost:2,3 \
   --epochs=5 \
   --batch_size=1 \
   --resume='$resume_path' \
+
 ```
 
 ### Evaluation on LLM-Seg40K dataset
@@ -170,12 +171,11 @@ After get the finetuned model. you can evaluate the finetuned model on the LLM-S
 
 ```bash
 #! /bin/bash
-
-llava_path="/home/leikel/junchi/pretrained_weights/LLaVA-lightning-7B-v1/"
-vision_path="/home/leikel/junchi/pretrained_weights/SAM/sam_vit_h_4b8939.pth"
-dataset_path="/home/leikel/junchi/lisa_dataset"
-sam_masks_path="/home/leikel/junchi/processed_data"
-log_path="/home/leikel/junchi/lisa_dataset/new_runs"
+llava_path="./pretrained_weights/LLaVA-lightning-7B-v1/"
+vision_path="./pretrained_weights/SAM/sam_vit_h_4b8939.pth"
+dataset_path="./lisa_dataset"
+sam_masks_path="./processed_data"
+log_path="./runs"
 
 deepspeed --include localhost:0,1 \
   --master_port=24353 validate_llmseg.py \
