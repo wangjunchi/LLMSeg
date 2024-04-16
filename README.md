@@ -1,6 +1,6 @@
 # LLM-Seg: Bridging Image Segmentation and Large Language Model Reasoning
 
-This is the official repository for the paper "LLM-Seg: Bridging Image Segmentation and Large Language Model Reasoning" (CVPR Workshop 2024).
+This is the official repository for the paper [\[arxiv\]](https://arxiv.org/abs/2404.08767): "LLM-Seg: Bridging Image Segmentation and Large Language Model Reasoning" (CVPR Workshop 2024).
 
 Our project is based on [LISA](https://github.com/dvlab-research/LISA). We thank the authors for their great work.
 
