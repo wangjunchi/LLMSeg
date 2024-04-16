@@ -214,3 +214,15 @@ Our project is based on the following repositories:
 - [DINOv2](https://github.com/facebookresearch/dinov2)
 
 We thank the authors for their great work. Please refer to their repositories for more details.
+
+## Citation
+```
+@misc{wang2024llmseg,
+      title={LLM-Seg: Bridging Image Segmentation and Large Language Model Reasoning}, 
+      author={Junchi Wang and Lei Ke},
+      year={2024},
+      eprint={2404.08767},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
