@@ -217,12 +217,10 @@ We thank the authors for their great work. Please refer to their repositories fo
 
 ## Citation
 ```
-@misc{wang2024llmseg,
-      title={LLM-Seg: Bridging Image Segmentation and Large Language Model Reasoning}, 
-      author={Junchi Wang and Lei Ke},
-      year={2024},
-      eprint={2404.08767},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
+@article{wang2024llmseg,
+      title={LLM-Seg: Bridging Image Segmentation and Large Language Model Reasoning},
+      author={Wang, Junchi and Ke, Lei},
+      journal={arXiv preprint arXiv:2404.08767},
+      year={2024}
+    }
 ```
